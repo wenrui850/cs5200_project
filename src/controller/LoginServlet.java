@@ -39,7 +39,7 @@ private static final long serialVersionUID = 1L;
 		if(checkUser) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("currentUser", user);
-			dispatcher = request.getRequestDispatcher("MovieUser.jsp");
+			dispatcher = request.getRequestDispatcher("Index.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			HttpSession session = request.getSession(false);

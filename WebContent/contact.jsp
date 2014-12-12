@@ -16,7 +16,7 @@
 	UserDao userDao = new UserDao();
 	int userId = userDao.findUserId(username);
 	User user1 = userDao.getUser(userId);
-	String goUser = "MovieUser.jsp";
+	String goUser = "Index.jsp";
 	
 %>
 <input id="movieName" type="hidden" value="<%=movieInnerID%>" />
@@ -66,133 +66,27 @@
             <input  type="hidden" name="title" id="title">
             <input  type="hidden" name="image" id="image">         
             <input  type="hidden" name="username" id="username" value="<%=username %>" />
-            
+          
             <br/>
 				<div id="comment" style="text-align: center;">
 					<textarea name="comment"
-						style="width: 600px; height: 100px; text-align: left;">
+						style="width: 600px; height: 120px; text-align: left;">
+	</textarea>
+					<br />
+					<h1> To </h1>
+				<br/>
+				<div id="comment" style="text-align: center;">
+					<textarea name="comment"
+						style="width: 600px; height: 50px; text-align: left;">
 	</textarea>
 					<br />
 
-
-			<script>
-				jQuery(init);
-
-				function init() {
-					var movieName = jQuery("#movieName").val();
-
-					var key = "m88h3a3m37pbjpfx8ug9wtfb";
-
-					jQuery
-							.ajax({
-								url : "http://api.rottentomatoes.com/api/public/v1.0/movies/"
-										+ movieName + ".json?apikey=" + key,
-								dataType : "jsonp",
-								success : handleResponse
-							});
-					// http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=[your_api_key]&q=Jack&page_limit=1
-				}
-
-				function handleResponse(response) {
-					var title = response.title;
-					var id = response.id;
-					var thumbnail = response.posters.thumbnail;
-					var genres = response.genres[1];
-					var year = response.year;
-					if (response.abridged_directors != null) {
-						var director = response.abridged_directors[0].name;
-					}
-
-					var list = jQuery("#movieList");
-					list.empty();
-
-					var liStr = '<tr id="1234"><td><img height="166" src=""/><button name="movieId" value="" class="">Like</button></td></tr>'
-							+ '<tr><td><span style="color:blue;">Year:      </span><span class="year" value="">Star Wars Episode V</span></td></tr>'
-							+ '<tr><td><span style="color:blue;">Title:     </span><span class="title" value="">Star Wars Episode V</span></td></tr>'
-							+ '<tr><td><span style="color:blue;">Genres:    </span><span class="genres" value=""></span></td></tr>'
-							+ '<tr><td><span style="color:blue;">Director:  </span><span class="director" value=""></span></td></tr>'
-							+ '<tr><td>&nbsp;</td></tr>';
-							
-				   document.getElementById("title").value=title;
-				   document.getElementById("image").value=thumbnail;
-
-
-					//var cast =  movie.abridged_cast[0];
-					//var synopsis = cast;
-					if (response.abridged_directors != null) {
-						console.log([ id, title, thumbnail, year, genres,
-								director ]);
-					} else {
-						console.log([ id, title, thumbnail, year, genres ]);
-					}
-
-					var li = jQuery(liStr);
-
-					li.attr("id", id);
-					li.find("img").attr("src", thumbnail);
-					li.find(".year").html(year);
-					li.find(".title").html(title);
-					li.find(".genres").html(genres);
-					li.find("button").attr("value",id);
-					
-					if (response.abridged_directors != null) {
-						li.find(".director").html(director);
-					}
-
-					list.append(li);
-
-					
-					if (response.abridged_cast != null) {
-						if(response.abridged_cast.length<=3){
-						for (var m = 0; m < response.abridged_cast.length; m++) {
-							var name = response.abridged_cast[m].name;
-							var character = response.abridged_cast[m].characters[0];
-							var listString = '<tr style="clear:both;"><td><span style="color:blue;">Actor:              </span><span id="actor" class="actor" value=""></span></td><td><span style="color:blue;">as:</span><span class="character" value=""></span></td><td><button id="btn" name="btn" value="">save the actor</button></td></tr>'
-							var lit = jQuery(listString);
-							lit.find("button").attr("value",name);
-							lit.find("input").attr("value",this.character);
-							lit.find(".actor").html(name);
-							lit.find(".character").html(character);
-							list.append(lit);
-						}
-						}else{
-							for (var m = 0; m < 3; m++) {
-								var name = response.abridged_cast[m].name;
-								var character = response.abridged_cast[m].characters[0];
-								var listString = '<tr style="clear:both;"><td><span style="color:blue;">Actor:              </span><span id="actor" class="actor" value=""></span></td><td><span style="color:blue;">as:</span><span class="character" value=""></span></td></tr>'
-								var lit = jQuery(listString);
-								lit.find("input").attr("value",this.character);
-								lit.find(".actor").html(name);
-								lit.find(".character").html(character);
-								list.append(lit);
-								if(m==0){
-								    document.getElementById("actor1").value=name;
-								    document.getElementById("character1").value=character;
-								}else if(m==1){
-								    document.getElementById("actor2").value=name;
-								    document.getElementById("character2").value=character;
-								}else{
-								    document.getElementById("actor3").value=name;
-								    document.getElementById("character3").value=character;
-								}
-							}
-						}
-					}
-					
-
-					if (response.synopsis != null) {
-						var list11 = jQuery("#movieList1");
-						list11.empty();
-						var synopsis = response.synopsis;
-						var listString = '<tr><td>&nbsp;</td></tr><tr><td><span class="synopsis" value=""></span></td></tr><tr><td>&nbsp;</td></tr>'
-						var lit = jQuery(listString);
-						lit.find(".synopsis").html(synopsis);
-						list11.append(lit);
-					}
-					
-					
-				}
-			</script>
+	<table>
+						<tr>
+							<td><a href="contact.jsp"><u>Send the message</u></a></td>
+						</tr>
+					</table>
+			
 		</div>
 	</div>
 </form>

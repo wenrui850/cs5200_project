@@ -13,14 +13,13 @@
 			<div id="wrapper">
 
 				<div id="logo">
-					<img src="Image/movies.jpg" width=260px />
+					<img src="http://omgghana.com/wp-content/uploads/2013/01/movie-logo.jpg" width=260px />
 				</div>
 
 				<div id="social-media-icons">
 					<ul>
 						<li><a href="http://www.facebook.com"><img
 								src="Image/icons/facebook_32.png" /></a></li>
-						<li><a href="#"><img src="Image/icons/rss_32.png" /></a></li>
 						<li><a href="http://www.twitter.com"><img
 								src="Image/icons/twitter_32.png" /></a></li>
 						<li><a href="http://www.youtube.com"><img

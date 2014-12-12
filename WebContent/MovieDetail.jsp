@@ -28,7 +28,7 @@ List<Review> reviews = reviewDao.listNReviewsForMovie(5,Id);
 	int userId = userDao.findUserId(username1);
 	User user1 = userDao.getUser(userId);
 	
-	String goUser = "MovieUser.jsp";
+	String goUser = "Index.jsp";
 	
 %>
 	<form action="ReviewServlet">

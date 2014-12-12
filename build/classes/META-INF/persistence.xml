@@ -6,6 +6,7 @@
 		<class>model.Movie</class>
 		<class>model.Review</class>
 		<class>model.User</class>
+		<class>model.Message</class>
 	<properties>
 			<property name="eclipselink.jdbc.password" value=""/>
 			<property name="eclipselink.jdbc.user" value="root"/>

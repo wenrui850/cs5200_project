@@ -24,6 +24,16 @@
 						<li><a href="http://www.youtube.com"><img
 								src="Image/icons/youtube_32.png" /></a></li>
 					</ul>
+					<div id="topnav">
+				<ul>
+					<li><a href="Index.jsp">HOMEPAGE</a></li>
+					<li><a href="ListMovie.jsp">ALL MOVIES</a></li>
+					<li><a href="contact.jsp">MESSAGE</a></li>
+					<li><a href="login.jsp">LOGIN</a></li>
+					<li><a href="UserProfile.jsp">PROFILE</a></li>
+
+				</ul>
+			</div>
 				</div>
 							<div id="login">
 			
@@ -34,7 +44,7 @@
 	UserDao userDao = new UserDao();
 	int userId = userDao.findUserId(username);
 	User user = userDao.getUser(userId);
-	String goUser = "MovieUser.jsp";
+	String goUser = "Index.jsp";
 	
 	
 	MovieDao movieDao = new MovieDao();

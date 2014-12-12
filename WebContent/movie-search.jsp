@@ -14,7 +14,7 @@
 	UserDao userDao = new UserDao();
 	int userId = userDao.findUserId(username);
 	User user1 = userDao.getUser(userId);
-	String goUser = "MovieUser.jsp";
+	String goUser = "Index.jsp";
 	
 %>
 	<div id="outer">

@@ -38,7 +38,7 @@ public class LikeServlet extends HttpServlet {
 		
 		reviewDao.createReview(userId,movieId,review);
 		
-		dispatcher = request.getRequestDispatcher("MovieUser.jsp");
+		dispatcher = request.getRequestDispatcher("Index.jsp");
 		dispatcher.forward(request, response);
 		
 	}

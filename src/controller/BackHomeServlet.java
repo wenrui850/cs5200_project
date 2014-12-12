@@ -21,7 +21,7 @@ private static final long serialVersionUID = 1L;
 		
 		
 		
-			dispatcher = request.getRequestDispatcher("MovieUser.jsp");
+			dispatcher = request.getRequestDispatcher("Index.jsp");
 			dispatcher.forward(request, response);
 		
 	}

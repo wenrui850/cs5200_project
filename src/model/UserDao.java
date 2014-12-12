@@ -7,17 +7,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.websocket.server.PathParam;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import model.Movie;
 import model.Review;
 import model.User;
-
+@Path("/user")
 public class UserDao {
 
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("Movie");
 	
 
-	
+	@POST
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public boolean createUser(User newUser)
 	{
 		boolean success = false;
@@ -34,7 +44,9 @@ public class UserDao {
 			success = true;
 		return success;
 	}
-	
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<User> getAllUsers()
 	{
 		List<User> users = new ArrayList<User>();
@@ -146,7 +158,10 @@ public class UserDao {
 		em.close();
 	}
 	
-	public User getUser(int userId)
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public User getUser(@PathParam ("id") int userId)
 	{
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();

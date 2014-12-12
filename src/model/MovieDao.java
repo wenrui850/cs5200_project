@@ -7,12 +7,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+@Path("/movie")
 public class MovieDao {
 
 	EntityManagerFactory factory = Persistence
 			.createEntityManagerFactory("Movie");
 
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Movie> listAllMovies() {
 		List<Movie> movies = new ArrayList<Movie>();
 		EntityManager em = factory.createEntityManager();
@@ -129,8 +137,10 @@ public class MovieDao {
 		em.close();
 		return movie;
 	}
-
-	public int findMovieId(String rottenTomatoesId) {
+	@GET
+	@Path("/{rid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public int findMovieId(@PathParam ("rid") String rottenTomatoesId) {
 		int movieId = 0;
 		List<Movie> movies = new ArrayList<Movie>();
 		EntityManager em = factory.createEntityManager();
